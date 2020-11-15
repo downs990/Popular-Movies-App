@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">PopularMoviesStage1</string>
+
+    <string name="main_display_message">URL JSON Result shown here…</string>
+    <string name="search">Search</string>
+    <string name="error_message">Error: Data could not load…</string>
+    <string name="sort_popularity">Sort By Popularity</string>
+    <string name="sort_rating">Sort By Rating</string>
+    <string name="my_favorites">My Favorites</string>
+
+
+    <string name="title">Movie Title</string>
+    <string name="year">Year</string>
+    <string name="vote_average">Vote Average</string>
+    <string name="description">Description…</string>
+    <string name="trailers_label">Trailers:</string>
+    <string name="favorites_button">Add to favorites</string>
+
+    <string name="main_activity_label">Downs Movies</string>
+    <string name="details_activity_label">Movie Details</string>
+
+    <string name="review_author">Author</string>
+    <string name="review_content">This is the content of the review that was made for this movie.</string>
+
+    <string name="reviews_label">Show Reviews</string>
+    <string name="empty_message">No Data Found</string>
+
+</resources>
