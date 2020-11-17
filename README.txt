@@ -1,0 +1,1 @@
+Please add your own API Key from movie db website to line 65 of MainActivity.java
