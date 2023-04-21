@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +27,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 public class MainActivity extends AppCompatActivity implements MovieAdapter.ListItemClickListener {
@@ -113,6 +117,39 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.List
         URL movieSearchURL = NetworkUtils.buildUrl(API_KEY, latestSortCriteria);
         MovieQueryTask myMovieQuery = new MovieQueryTask();
         myMovieQuery.execute(movieSearchURL);
+
+//        ExecutorService executor = Executors.newSingleThreadExecutor();
+//        Handler handler = new Handler(Looper.getMainLooper());
+//
+//        executor.execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                String movieJSONResults = null;
+//                try {
+//                    movieJSONResults = NetworkUtils.getResponseFromHttpUrl(movieUrl);
+//
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//
+//                String finalMovieJSONResults = movieJSONResults;
+//                handler.post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        //UI Thread work here
+//                        mLoadingIndicator.setVisibility(View.INVISIBLE);
+//                        if (finalMovieJSONResults != null && !finalMovieJSONResults.equals("")) {
+//                            hideErrorMessage();
+//
+//                            mMoviesJSON = finalMovieJSONResults;
+//                            populateGridWithMovieImages(mMoviesJSON);
+//                        } else {
+//                            showErrorMessage();
+//                        }
+//                    }
+//                });
+//            }
+//        });
     }
 
 
@@ -195,13 +232,14 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.List
     public class MovieQueryTask extends AsyncTask<URL, Void, String> {
 
 
+        @Deprecated
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             mLoadingIndicator.setVisibility(View.VISIBLE);
 
         }
-
+        @Deprecated
         @Override
         protected String doInBackground(URL... params) {
             URL movieUrl = params[0];
@@ -213,7 +251,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.List
             }
             return movieJSONResults;
         }
-
+        @Deprecated
         @Override
         protected void onPostExecute(String movieSearchResults) {
             mLoadingIndicator.setVisibility(View.INVISIBLE);

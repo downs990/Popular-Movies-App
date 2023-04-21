@@ -1,11 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
+    namespace 'com.example.popularmoviesstage1'
     compileSdkVersion 29
 
     defaultConfig {
         applicationId "com.example.popularmoviesstage1"
         minSdkVersion 16
+        //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"

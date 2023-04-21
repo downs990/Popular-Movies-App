@@ -7,10 +7,15 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.Scanner;
+
+import javax.net.ssl.HttpsURLConnection;
 
 
 public class NetworkUtils {
+
+
 
 
     final static String MOVIES_BASE_URL =
@@ -33,10 +38,9 @@ public class NetworkUtils {
         return url;
     }
 
-
-
     public static String getResponseFromHttpUrl(URL url) throws IOException {
-        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+        HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
+
         try {
             InputStream in = urlConnection.getInputStream();
 
@@ -49,8 +53,13 @@ public class NetworkUtils {
             } else {
                 return null;
             }
+
+        }catch(Exception e){
+            return e.getMessage();
         } finally {
             urlConnection.disconnect();
         }
     }
+
+
 }
